@@ -10,5 +10,17 @@ public class dLeftHashTable extends HashTable{
         // TODO Auto-generated method stub
         
     }
+
+    @Override
+    public boolean QueryFlow(int flowID) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void Output() {
+        // TODO Auto-generated method stub
+        
+    }
     
 }

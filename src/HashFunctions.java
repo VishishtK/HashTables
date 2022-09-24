@@ -5,10 +5,12 @@ public class HashFunctions {
 
     int[] hashFunctionInts;
     int hashSize;
+    int bound;
 
-    public HashFunctions(int k){
+    public HashFunctions(int k,int bound){
         this.hashFunctionInts = IntStream.generate(() -> new Random().nextInt(Integer.MAX_VALUE)).limit(k).toArray();
         this.hashSize = k;
+        this.bound = bound;
     }
 
     public int FNVHash(final String k) {
@@ -21,7 +23,7 @@ public class HashFunctions {
             rv ^= k.charAt(i);
             rv *= FNV_32_PRIME;
         }
-        return Math.abs(rv%this.hashSize);
+        return Math.abs(rv%this.bound);
     }
 
     public int Hash(int k, int functionNumber){
