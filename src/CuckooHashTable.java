@@ -79,13 +79,5 @@ public class CuckooHashTable extends HashTable{
     public boolean QueryFlow(int flowID) {
         return flowSeenBefore(flowID);
     }
-
-    @Override
-    public void Output() {
-        System.out.println("Number of flows in the hash table: "+ flowsAdded);
-        System.out.println("Flow ID's recorded:");
-        // System.out.println(Arrays.toString(hashTable));
-        
-    }
     
 }

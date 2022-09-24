@@ -25,6 +25,7 @@ public class MultiHashTable extends HashTable{
         }
         
         int key;
+        
         for(int i=0;i<hashFunctions.hashSize;i++){
             key = hashFunctions.Hash(flowID, i);
             if(hashTable[key]==null){
@@ -39,13 +40,6 @@ public class MultiHashTable extends HashTable{
     @Override
     public boolean QueryFlow(int flowID) {
         return flowSeenBefore(flowID);
-    }
-
-    @Override
-    public void Output() {
-        System.out.println("Number of flows in the hash table: "+ flowsAdded);
-        System.out.println("Flow ID's recorded:");
-        // System.out.println(Arrays.toString(hashTable));
     }
 
 }

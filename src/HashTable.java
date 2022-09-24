@@ -18,12 +18,17 @@ public abstract class HashTable {
 
     public abstract void addFlow(int flowID);
     public abstract boolean QueryFlow(int flowID);
-    public abstract void Output();
 
     public void GenFLows(){
         Random random = new Random();
         for (int i = 0; i < this.NumberFlows; i++){
             addFlow(Math.abs(random.nextInt()));
         }
+    }
+
+    public void Output() {
+        System.out.println("Number of flows in the hash table: "+ flowsAdded);
+        System.out.println("Flow ID's recorded:");
+        // System.out.println(Arrays.toString(hashTable));
     }
 }

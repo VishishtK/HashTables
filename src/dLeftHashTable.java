@@ -1,26 +1,52 @@
-public class dLeftHashTable extends HashTable{
+public class DLeftHashTable extends HashTable{
 
-    public dLeftHashTable(int NumberTableEntries, int NumberFlows, int NumberHashes) {
+    int segments;
+    int segmentsSize;
+
+    public DLeftHashTable(int NumberTableEntries, int NumberFlows, int NumberHashes) {
         super(NumberTableEntries, NumberFlows, NumberHashes);
-        //TODO Auto-generated constructor stub
+        this.segments = NumberHashes;
+        this.segmentsSize = NumberTableEntries/segments;
+        this.hashFunctions.bound = this.segmentsSize;
+    }
+
+    private boolean flowSeenBefore(int flowID){
+        int key;
+        for(int i=0;i<segments;i++){
+            key = i*this.segmentsSize + hashFunctions.Hash(flowID, i);
+            if(hashTable[key]==null){
+                return false;
+            }
+            if(hashTable[key]==flowID){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public void addFlow(int flowID) {
-        // TODO Auto-generated method stub
+        if(flowSeenBefore(flowID)){
+            return;
+        }
+
+        int key;
+
+        for(int i=0;i<hashFunctions.hashSize;i++){
+            key = i*this.segmentsSize + hashFunctions.Hash(flowID, i);
+            if(hashTable[key]==null){
+                hashTable[key]=flowID;
+                flowsAdded++;
+                return;
+            }
+        }
+        return;
         
     }
 
     @Override
     public boolean QueryFlow(int flowID) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public void Output() {
-        // TODO Auto-generated method stub
-        
+        return flowSeenBefore(flowID);
     }
     
 }
