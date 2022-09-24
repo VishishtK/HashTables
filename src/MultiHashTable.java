@@ -5,7 +5,6 @@ public class MultiHashTable extends HashTable{
     }
 
     private boolean flowSeenBefore(int flowID){
-        // TODO : Optimise for returning on key not found
         int key;
         for(int i=0;i<hashFunctions.hashSize;i++){
             key = hashFunctions.Hash(flowID, i);

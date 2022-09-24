@@ -5,11 +5,9 @@ public class CuckooHashTable extends HashTable{
     public CuckooHashTable(int NumberTableEntries, int NumberFlows, int NumberHashes, int cuckooSteps) {
         super(NumberTableEntries, NumberFlows, NumberHashes);
         this.cuckooSteps = cuckooSteps;
-        //TODO Auto-generated constructor stub
     }
 
     private boolean flowSeenBefore(int flowID){
-        // TODO : Optimise for returning on key not found
         int key;
         for(int i=0;i<hashFunctions.hashSize;i++){
             key = hashFunctions.Hash(flowID, i);
@@ -50,7 +48,6 @@ public class CuckooHashTable extends HashTable{
 
     @Override
     public void addFlow(int flowID) {
-        // TODO Auto-generated method stub
         if(flowSeenBefore(flowID)){
             return;
         }
