@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 public abstract class HashTable {
 
     int NumberTableEntries;
@@ -23,9 +26,17 @@ public abstract class HashTable {
         }
     }
 
-    public void Output() {
+    public void Output(String outputFileName) {
         System.out.println("Number of flows in the hash table: "+ flowsAdded);
         System.out.println("Flow ID's recorded:");
         // System.out.println(Arrays.toString(hashTable));
+
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            writer.write(String.valueOf(flowsAdded));
+            writer.close();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
     }
 }

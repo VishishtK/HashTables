@@ -2,6 +2,8 @@ public class DLeftHashTable extends HashTable{
 
     int segments;
     int segmentsSize;
+    String outputFileName = "DLeftHashTable.txt";
+
 
     public DLeftHashTable(int NumberTableEntries, int NumberFlows, int NumberHashes) {
         super(NumberTableEntries, NumberFlows, NumberHashes);
@@ -48,5 +50,9 @@ public class DLeftHashTable extends HashTable{
     public boolean QueryFlow(int flowID) {
         return flowSeenBefore(flowID);
     }
+
+    public void Output() {
+        Output(this.outputFileName);
+    } 
     
 }

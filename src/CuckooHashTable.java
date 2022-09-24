@@ -1,6 +1,7 @@
 public class CuckooHashTable extends HashTable{
 
     int cuckooSteps;
+    String outputFileName = "CuckooHashTable.txt";
 
     public CuckooHashTable(int NumberTableEntries, int NumberFlows, int NumberHashes, int cuckooSteps) {
         super(NumberTableEntries, NumberFlows, NumberHashes);
@@ -79,5 +80,9 @@ public class CuckooHashTable extends HashTable{
     public boolean QueryFlow(int flowID) {
         return flowSeenBefore(flowID);
     }
+
+    public void Output() {
+        Output(this.outputFileName);
+    } 
     
 }

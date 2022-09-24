@@ -1,5 +1,7 @@
 public class MultiHashTable extends HashTable{
 
+    String outputFileName = "MultiHashTable.txt";
+
     public MultiHashTable(int NumberTableEntries, int NumberFlows, int NumberHashes) {
         super(NumberTableEntries, NumberFlows, NumberHashes);
     }
@@ -41,5 +43,9 @@ public class MultiHashTable extends HashTable{
     public boolean QueryFlow(int flowID) {
         return flowSeenBefore(flowID);
     }
+
+    public void Output() {
+        Output(this.outputFileName);
+    } 
 
 }
