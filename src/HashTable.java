@@ -19,10 +19,9 @@ public abstract class HashTable {
     public abstract void addFlow(int flowID);
     public abstract boolean QueryFlow(int flowID);
 
-    public void GenFLows(){
-        Random random = new Random();
-        for (int i = 0; i < this.NumberFlows; i++){
-            addFlow(Math.abs(random.nextInt()));
+    public void ConsumeFLows(int[] flow){
+        for (int i = 0; i < flow.length; i++){
+            addFlow(flow[i]);
         }
     }
 
