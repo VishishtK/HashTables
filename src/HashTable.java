@@ -1,5 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class HashTable {
 
@@ -28,12 +30,14 @@ public abstract class HashTable {
 
     public void Output(String outputFileName) {
         System.out.println("Number of flows in the hash table: "+ flowsAdded);
-        System.out.println("Flow ID's recorded:");
-        // System.out.println(Arrays.toString(hashTable));
+        List<Integer> flowIds = Arrays.stream(hashTable).filter(x -> x != null).toList();
 
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
-            writer.write(String.valueOf(flowsAdded));
+            writer.write(String.valueOf(flowsAdded)+"\n");
+            writer.write(String.valueOf("Flow ID's recorded:\n"));
+            writer.write(flowIds.toString());
+
             writer.close();
         }catch(Exception e){
             System.out.println(e.toString());

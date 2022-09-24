@@ -8,7 +8,8 @@ public class App {
         int NumberFlows = 1000;
         int NumberHashes = 3;
 
-        int[]  randomFlow = IntStream.generate(() -> new Random().nextInt()).limit(NumberFlows).toArray();
+        int[]  randomFlow = IntStream.generate(() -> new Random().nextInt()).limit(NumberFlows).map(flowId -> Math.abs(flowId)).toArray();
+        // randomFlow = Arrays.stream(randomFlow).map().toArray();
 
         System.out.println("Testing MultiHashTable");
         MultiHashTable multiHashTable = new MultiHashTable(NumberTableEntries, NumberFlows, NumberHashes);
